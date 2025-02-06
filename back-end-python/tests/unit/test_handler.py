@@ -42,7 +42,7 @@ QUESTION_EVENT = {
 SCORES_EVENT = {
         "gameid" : "01234567012301230123012345678901",
         "questions" : [
-            { "id" : "q-1111", "question" : "Good question?", "answer" : "Yes", "bonus" : 20},
+            { "id" : "q-1111", "question" : "Good question?", "answer" : "Yes", "bonus" : 10},
         ],
         "iterator" : { "questionpos" : 0 }
 }
@@ -185,7 +185,7 @@ def test_trivia_calculate_scores_correct(mocker):
     )
 
     app.MANAGEMENT.post_to_connection.assert_has_calls([
-        mock.call(Data='{"action": "playerlist", "players": [{"connectionId": "connection-1", "playerName": "AliceBlue", "score": 10, "currentPlayer": true}]}', ConnectionId='connection-1'),
+        mock.call(Data='{"action": "playerlist", "players": [{"connectionId": "connection-1", "playerName": "AliceBlue", "score": 20, "currentPlayer": true}]}', ConnectionId='connection-1'),
         mock.call(Data='{"action": "gameover"}', ConnectionId='connection-1')
         ])
 
